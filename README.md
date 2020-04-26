@@ -1,3 +1,5 @@
+![Test Action](https://github.com/rbhadti94/apache-jmeter-action/workflows/Test%20Action/badge.svg)
+
 # Apache JMeter Github Action
 
 This action runs a JMeter performance test using a given JMX test file. It will output a log file and a results file.
