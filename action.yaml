@@ -1,0 +1,32 @@
+name: Apache JMeter
+description: Runs an Apache JMeter test case
+author: Ravindra Bhadti <rbhadti@gmail.com>
+
+inputs:
+  testFilePath:
+    description: The path to the JMX test file
+    required: true
+  outputLogFilePath:
+    description: The path where the log file will get generated. E.g. "reports/jmeter_output.log"
+    default: jmeter_output.log
+    required: false
+  outputResultsPath:
+    description: The path where the results will get published. E.g. "reports/jmeter_results.log"
+    required: false
+    default: jmeter_results.log
+  
+runs: 
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - "-n" # Run in headless mode
+    - "-t"
+    - "${{ inputs.testFilePath }}"
+    - "-l"
+    - "${{ inputs.outputResultsPath }}"
+    - "-j"
+    - "${{ inputs.outputLogFilePath }}"
+
+branding:
+  color: gray-dark
+  icon: arrow-up
