@@ -1,2 +1,10 @@
-# apache-jmeter-action
-A GitHub action for carrying out Apache JMeter Performance Tests
+# Apache JMeter Github Action
+
+This action runs a JMeter performance test using a given JMX test file.
+
+## Inputs
+
+
+## Outputs
+
+## Example usage
