@@ -6,26 +6,55 @@ inputs:
   testFilePath:
     description: The path to the JMX test file
     required: true
-  outputLogFilePath:
-    description: The path where the log file will get generated. E.g. "reports/jmeter_output.log"
-    default: jmeter_output.log
+  outputReportsFolder:
+    description: The folder where the JMeter reports will be published
     required: false
-  outputResultsPath:
-    description: The path where the results will get published. E.g. "reports/jmeter_results.log"
+    default: reports/
+  args:
     required: false
-    default: jmeter_results.log
-  
+    description: |
+      Optional arguments that are passed to the JMeter tool
+
+      Options:
+        -p, --propfile <argument> the jmeter property file to use
+        -q, --addprop <argument>  additional JMeter property file(s)
+        -l, --logfile <argument>  the file to log samples to
+        -i, --jmeterlogconf <argument> jmeter logging configuration file (log4j2.xml)
+        -j, --jmeterlogfile <argument>  jmeter run log file (jmeter.log)
+        -s, --server  run the JMeter server
+        -E, --proxyScheme <argument>  Set a proxy scheme to use for the proxy server
+        -H, --proxyHost <argument>  Set a proxy server for JMeter to use
+        -P, --proxyPort <argument>  Set proxy server port for JMeter to use
+        -N, --nonProxyHosts <argument>  Set nonproxy host list (e.g. *.apache.org|localhost)
+        -u, --username <argument> Set username for proxy server that JMeter is to use
+        -a, --password <argument> Set password for proxy server that JMeter is to use
+        -J, --jmeterproperty <argument>=<value> Define additional JMeter properties
+        -G, --globalproperty <argument>=<value> Define Global properties (sent to servers) e.g. -Gport=123 or -Gglobal.properties
+        -D, --systemproperty <argument>=<value> Define additional system properties
+        -S, --systemPropertyFile <argument> additional system property file(s)
+        -f, --forceDeleteResultFile force delete existing results files and web report folder if present before starting the test
+        -L, --loglevel <argument>=<value> [category=]level e.g. jorphan=INFO, jmeter.util=DEBUG or com.example.foo=WARN
+        -r, --runremote Start remote servers (as defined in remote_hosts)
+        -R, --remotestart <argument> Start these remote servers (overrides remote_hosts)
+        -d, --homedir <argument> the jmeter home directory to use
+        -X, --remoteexit Exit the remote servers at end of test (non-GUI)
+        -g, --reportonly <argument> generate report dashboard only, from a test results file
+
+# Run JMeter in headless mode.
+## Produce reports in the specified folders.
 runs: 
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - "-n" # Run in headless mode
+    - "-n"
     - "-t"
     - "${{ inputs.testFilePath }}"
     - "-l"
-    - "${{ inputs.outputResultsPath }}"
-    - "-j"
-    - "${{ inputs.outputLogFilePath }}"
+    - "jmeter_log.log"
+    - "-e"
+    - "-f"
+    - "-o"
+    - "${{ inputs.outputReportsFolder }}"
 
 branding:
   color: gray-dark
