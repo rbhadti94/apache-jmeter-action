@@ -2,7 +2,9 @@ name: Test Action
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      - master
+      - 'feature/adding-reports'
   pull_request:
     branches: [ master ]
 
@@ -19,10 +21,9 @@ jobs:
       uses: ./
       with:
         testFilePath: tests/sample_test.jmx
-        outputLogFilePath: results/results.log
-        outputResultsPath: results/test_results.log
+        outputReportsFolder: reports/
 
     - uses: actions/upload-artifact@v1
       with:
         name: jmeter-test-results
-        path: results/
+        path: reports/
