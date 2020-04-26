@@ -6,14 +6,15 @@ This action runs a JMeter performance test using a given JMX test file. It will 
 
 ### `testFilePath`
 **Required**: The path to the JMX test file to run with JMeter
+
 ### `outputLogFilePath`
 **Not Required**: The output file which will hold the JMeter log after the test run.
+
 **Default**: jmeter_output.log
 ### `outputResultsPath`
 **Not Required**: The output file which will hold the JMeter results after the test run.
-**Default**: jmeter_results.log
 
-## Outputs
+**Default**: jmeter_results.log
 
 ## Example usage
 ```yaml
