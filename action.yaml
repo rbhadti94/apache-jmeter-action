@@ -6,24 +6,26 @@ inputs:
   testFilePath:
     description: The path to the JMX test file
     required: true
-  logFilePath:
-    description: The path where the log file will get generated
-    required: true
-  resultPath:
-    description: The path where the results will get published
-    required: true
+  outputLogFilePath:
+    description: The path where the log file will get generated. E.g. "reports/jmeter_output.log"
+    default: jmeter_output.log
+    required: false
+  outputResultsPath:
+    description: The path where the results will get published. E.g. "reports/jmeter_results.log"
+    required: false
+    default: jmeter_results.log
   
 runs: 
   using: 'docker'
   image: 'Dockerfile'
-  runs.args:
+  args:
     - "-n" # Run in headless mode
     - "-t"
     - "${{ inputs.testFilePath }}"
     - "-l"
-    - "${{ inputs.resultPath }}"
+    - "${{ inputs.outputResultsPath }}"
     - "-j"
-    - "${{ inputs.logFilePath }}"
+    - "${{ inputs.outputLogFilePath }}"
 
 branding:
   color: gray-dark
