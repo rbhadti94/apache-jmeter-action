@@ -1,6 +1,8 @@
 name: Test Action
 
 on:
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -12,10 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
+
     - name: run jmeter action
       uses: ./
       with:
         testFilePath: tests/sample_test.jmx
-        outputLogFilePath: results.log
-        outputResultsPath: results
+        outputLogFilePath: results/results.log
+        outputResultsPath: results/test_results.log
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: jmeter-test-results
+        path: results/
