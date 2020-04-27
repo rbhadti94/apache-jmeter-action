@@ -18,4 +18,8 @@ RUN apk --no-cache add curl ca-certificates openjdk9-jre && \
     rm /tmp/apache-jmeter-${JMETER_VERSION}.tgz && \
     rm -rf /var/cache/apk/*
 
-ENTRYPOINT [ "jmeter" ]
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod a+x /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]

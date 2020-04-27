@@ -1,12 +1,13 @@
-name: Test Action
+---
+name: Test JMeter Action
 
 on:
   push:
-    branches: 
+    branches:
       - master
       - 'feature/adding-reports'
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
 
@@ -15,15 +16,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: run jmeter action
-      uses: ./
-      with:
-        testFilePath: tests/sample_test.jmx
-        outputReportsFolder: reports/
+      - uses: actions/checkout@v1
 
-    - uses: actions/upload-artifact@v1
-      with:
-        name: jmeter-test-results
-        path: reports/
+      - name: Lint all YAML files in the directory
+        uses: ibiqlik/action-yamllint@master
+
+      - name: Run JMeter Action
+        uses: ./
+        with:
+          testFilePath: tests/sample_test.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jmeter-test-results
+          path: reports/
