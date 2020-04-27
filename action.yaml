@@ -1,3 +1,4 @@
+---
 name: Apache JMeter
 description: Runs an Apache JMeter test case
 author: Ravindra Bhadti <rbhadti@gmail.com>
@@ -16,33 +17,33 @@ inputs:
       Optional arguments that are passed to the JMeter tool
 
       Options:
-        -p, --propfile <argument> the jmeter property file to use
-        -q, --addprop <argument>  additional JMeter property file(s)
-        -l, --logfile <argument>  the file to log samples to
-        -i, --jmeterlogconf <argument> jmeter logging configuration file (log4j2.xml)
-        -j, --jmeterlogfile <argument>  jmeter run log file (jmeter.log)
-        -s, --server  run the JMeter server
-        -E, --proxyScheme <argument>  Set a proxy scheme to use for the proxy server
-        -H, --proxyHost <argument>  Set a proxy server for JMeter to use
-        -P, --proxyPort <argument>  Set proxy server port for JMeter to use
-        -N, --nonProxyHosts <argument>  Set nonproxy host list (e.g. *.apache.org|localhost)
-        -u, --username <argument> Set username for proxy server that JMeter is to use
-        -a, --password <argument> Set password for proxy server that JMeter is to use
-        -J, --jmeterproperty <argument>=<value> Define additional JMeter properties
-        -G, --globalproperty <argument>=<value> Define Global properties (sent to servers) e.g. -Gport=123 or -Gglobal.properties
-        -D, --systemproperty <argument>=<value> Define additional system properties
-        -S, --systemPropertyFile <argument> additional system property file(s)
-        -f, --forceDeleteResultFile force delete existing results files and web report folder if present before starting the test
-        -L, --loglevel <argument>=<value> [category=]level e.g. jorphan=INFO, jmeter.util=DEBUG or com.example.foo=WARN
-        -r, --runremote Start remote servers (as defined in remote_hosts)
-        -R, --remotestart <argument> Start these remote servers (overrides remote_hosts)
-        -d, --homedir <argument> the jmeter home directory to use
-        -X, --remoteexit Exit the remote servers at end of test (non-GUI)
-        -g, --reportonly <argument> generate report dashboard only, from a test results file
+        -p, --propfile <argument>
+        -q, --addprop <argument>
+        -i, --jmeterlogconf <argument>
+        -j, --jmeterlogfile <argument>
+        -s, --server
+        -E, --proxyScheme <argument>
+        -H, --proxyHost <argument>
+        -P, --proxyPort <argument>
+        -N, --nonProxyHosts<argument>
+        -u, --username <argument>
+        -a, --password <argument>
+        -J, --jmeterproperty <argument>=<value>
+        -G, --globalproperty <argument>=<value>
+        -D, --systemproperty <argument>=<value>
+        -S, --systemPropertyFile <argument>
+        -f, --forceDeleteResultFile
+        -L, --loglevel <argument>=<value>
+        -r, --runremote
+        -R, --remotestart <argument>
+        -d, --homedir <argument>
+        -X, --remoteexit
+        -g, --reportonly <argument>
 
 # Run JMeter in headless mode.
 ## Produce reports in the specified folders.
-runs: 
+## Can provide additional arguments via inputs.args
+runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
@@ -55,6 +56,7 @@ runs:
     - "-f"
     - "-o"
     - "${{ inputs.outputReportsFolder }}"
+    - "${{ inputs.args }}"
 
 branding:
   color: gray-dark
