@@ -28,7 +28,7 @@ Please see https://jmeter.apache.org/usermanual/get-started.html for more inform
 # Use JMeter to run the JMX test case and produce reports in the "reports/"
 # directory in the workspace.
 - name: Run JMeter Tests
-  uses: rbhadti94/apache-jmeter-action@v0.1.2
+  uses: rbhadti94/apache-jmeter-action@v0.2.0
   with:
     testFilePath: tests/sample_test.jmx
     outputReportsFolder: reports/
@@ -36,7 +36,7 @@ Please see https://jmeter.apache.org/usermanual/get-started.html for more inform
 # Use JMeter to run the JMX test case.
 # Modify the logging level and pass in some custom properties and config
 - name: Run JMeter Tests with modified logging and custom properties
-  uses: rbhadti94/apache-jmeter-action@v0.1.2
+  uses: rbhadti94/apache-jmeter-action@v0.2.0
   with:
     testFilePath: tests/sample_test.jmx
     outputReportsFolder: reports/
