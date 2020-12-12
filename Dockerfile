@@ -1,7 +1,6 @@
 FROM alpine:3.12.1
 
 LABEL "maintainer" "Ravindra Bhadti"
-
 LABEL "com.github.actions.name"="apache-jmeter"
 LABEL "com.github.actions.description"="Run Apache JMeter Performance Tests"
 
@@ -18,6 +17,7 @@ RUN apk --no-cache add curl ca-certificates openjdk9-jre && \
     mkdir -p /opt/apache && \
     mv apache-jmeter-${JMETER_VERSION} /opt/apache && \
     rm /tmp/apache-jmeter-${JMETER_VERSION}.tgz && \
+    rm -rf ${JMETER_HOME}/docs && rm -rf ${JMETER_HOME}/printable_docs \
     rm -rf /var/cache/apk/* && \
     chmod a+x /entrypoint.sh
 
