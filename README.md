@@ -42,3 +42,35 @@ Please see https://jmeter.apache.org/usermanual/get-started.html for more inform
     outputReportsFolder: reports/
     args: "--loglevel INFO -JMyProperty=Value --jmeterlogconf=log.conf"
 ```
+
+### Full Example Usage
+Use JMeter to run the JMX test case and produce reports in the "reports/"directory in the workspace.
+
+```yaml
+name: Test JMeter Action
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: [master]
+
+jobs:
+  action_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run JMeter Action
+        uses: ./
+        with:
+          testFilePath: tests/sample_test.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jmeter-test-results
+          path: reports/
+```
