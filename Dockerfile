@@ -25,4 +25,4 @@ RUN apk --no-cache add curl ca-certificates openjdk9-jre && \
     rm -rf /var/cache/apk/* && \
     chmod a+x /entrypoint.sh
 
-# ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
