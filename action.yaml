@@ -11,6 +11,12 @@ inputs:
     description: The folder where the JMeter reports will be published
     required: false
     default: reports/
+  plugins:
+    description: List of jmeter plugins to install
+    required: false
+  dependencyFolder:
+    description: Folder that contains custom jmeter plugins or dependencies
+    required: false
   args:
     required: false
     description: |
@@ -46,6 +52,9 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    PLUGINS: ${{ inputs.plugins }}
+    DEPENDENCY_FOLDER: ${{ inputs.dependencyFolder }}
   args:
     - "-n"
     - "-t"
