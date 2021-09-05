@@ -27,6 +27,7 @@ RUN apk --no-cache add curl ca-certificates openjdk9-jre && \
     chmod a+x /entrypoint.sh
 
 RUN echo ${DEPENDENCY_FOLDER}
+RUN ls ${DEPENDENCY_FOLDER}
 RUN echo ${PLUGINS}
 
 ENTRYPOINT [ "/entrypoint.sh" ]
