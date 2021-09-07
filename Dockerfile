@@ -27,6 +27,7 @@ RUN apk --no-cache add curl ca-certificates openjdk9-jre && \
     chmod +x ${JMETER_HOME}/bin/PluginsManagerCMD.sh && \
     rm -rf ${JMETER_HOME}/docs && rm -rf ${JMETER_HOME}/printable_docs \
     rm -rf /var/cache/apk/* && \
-    chmod a+x /entrypoint.sh
+    chmod a+x /entrypoint.sh && \
+    chmod a+x /cleanup.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
