@@ -7,6 +7,7 @@ echo "plugins = ${PLUGINS}"
 
 cp ${GITHUB_WORKSPACE}/${DEPENDENCY_FOLDER}/*.jar ${JMETER_HOME}/lib/
 [ $? -eq 0 ]  || exit 1
+ls ${JMETER_HOME}/lib
 
 pluginArray=$(echo $PLUGINS | tr "," "\n")
 for plugin in $pluginArray
