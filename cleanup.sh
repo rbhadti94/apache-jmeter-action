@@ -1,4 +1,4 @@
 #!/bin/sh
-ls ${{ inputs.outputReportsFolder }}
-rm -rf ${{ inputs.outputReportsFolder }}
-ls ${{ inputs.outputReportsFolder }}
+ls ${REPORT_FOLDER}
+rm -rf ${REPORT_FOLDER}
+ls ${REPORT_FOLDER}
