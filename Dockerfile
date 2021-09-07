@@ -22,12 +22,10 @@ RUN apk --no-cache add curl ca-certificates openjdk9-jre && \
     rm /tmp/apache-jmeter-${JMETER_VERSION}.tgz && \
     curl ${MAVEN_REPO}/cmdrunner/${CMD_RUNNER_VERSION}/cmdrunner-${CMD_RUNNER_VERSION}.jar --output ${JMETER_HOME}/lib/cmdrunner-${CMD_RUNNER_VERSION}.jar && \
     curl ${MAVEN_REPO}/jmeter-plugins-manager/${JMETER_PLUGIN_VERSION}/jmeter-plugins-manager-${JMETER_PLUGIN_VERSION}.jar --output ${JMETER_HOME}/lib/ext/jmeter-plugins-manager-${JMETER_PLUGIN_VERSION}.jar && \
+    java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager-${JMETER_PLUGIN_VERSION}.jar org.jmeterplugins.repository.PluginManagerCMDInstaller && \
+    chmod +x ${JMETER_HOME}/bin/PluginsManagerCMD.sh && \
     rm -rf ${JMETER_HOME}/docs && rm -rf ${JMETER_HOME}/printable_docs \
     rm -rf /var/cache/apk/* && \
     chmod a+x /entrypoint.sh
-
-RUN echo ${DEPENDENCY_FOLDER}
-RUN ls ${DEPENDENCY_FOLDER}
-RUN echo ${PLUGINS}
 
 ENTRYPOINT [ "/entrypoint.sh" ]
