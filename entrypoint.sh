@@ -18,6 +18,6 @@ then
   done
 fi
 
-jmeter $@
-status=$?
-[ $status -eq 0 ] && exit 0 || echo "JMeter exited with status code $status" && exit $status
+#jmeter $@
+#status=$?
+#[ $status -eq 0 ] && exit 0 || echo "JMeter exited with status code $status" && exit $status
