@@ -52,7 +52,7 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  post-entrypoint: 'cleanup.sh'
+  post-entrypoint: '/cleanup.sh'
   env:
     PLUGINS: ${{ inputs.plugins }}
     DEPENDENCY_FOLDER: ${{ inputs.dependencyFolder }}
