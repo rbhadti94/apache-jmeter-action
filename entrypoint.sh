@@ -17,4 +17,6 @@ do
 done
 
 jmeter $@
-[ $? -eq 0 ]  || exit 1
+status=$?
+echo "status=$status"
+[ $status -eq 0 ] || echo "JMeter exited with status code $status" && exit 1
