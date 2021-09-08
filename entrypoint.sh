@@ -11,11 +11,6 @@ fi
 if [ -n "$PLUGINS" ]
 then
   echo "$PLUGINS" | tr "," "\n" | parallel -I% --jobs 5 "${JMETER_HOME}/bin/PluginsManagerCMD.sh install %"
-#  for plugin in $pluginArray
-#  do
-#    ${JMETER_HOME}/bin/PluginsManagerCMD.sh install $plugin
-#    [ $? -eq 0 ] || exit 1
-#  done
 fi
 
 jmeter $@
