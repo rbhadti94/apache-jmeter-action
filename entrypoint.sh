@@ -33,7 +33,7 @@ else
   echo "Multiple files specified - Running each JMX File"
   for FILE in "$TESTFILE_PATH/*.jmx"
   do
-    jmeter -n -t $TESTFILE_PATH $@ 
+    jmeter -n -t $TESTFILE_PATH $@
   done
 fi
 
