@@ -27,13 +27,14 @@ fi
 if [[ $TESTFILE_PATH == *.jmx ]]
 then
   echo "Single file specified so only running one test"
+  echo "Running jmeter -n -t $TESTFILE_PATH $@"
   jmeter -n -t $TESTFILE_PATH $@
   status=$?
 else
   echo "Multiple files specified - Running each JMX File"
   for FILE in "$TESTFILE_PATH/*.jmx"
   do
-    jmeter -n -t $TESTFILE_PATH $@
+    jmeter -n -t $FILE $@
   done
 fi
 
