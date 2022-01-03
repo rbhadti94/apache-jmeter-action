@@ -24,6 +24,8 @@ then
   echo "$PLUGINS" | tr "," "\n" | parallel -I% --jobs 5 "${JMETER_HOME}/bin/PluginsManagerCMD.sh install %"
 fi
 
+status=0
+
 if [[ $TESTFILE_PATH == *.jmx ]]
 then
   echo "Single file specified so only running one test"
@@ -35,6 +37,13 @@ else
   for FILE in "$TESTFILE_PATH/*.jmx"
   do
     jmeter -n -t $FILE $@
+    test_run=$?
+    # If any of the previous tests haven't failed
+    if [ "$test_run" == "0" && "$status" == "0"]
+    then
+      status=1 # Set one of the tests failing
+    fi
+    echo "Test $FILE has exited with status code $test_run"
   done
 fi
 
