@@ -26,6 +26,13 @@ jobs:
           outputReportsFolder: reports/
           args: "--loglevel INFO"
 
+      - name: Run More Than One JMeter Action
+        uses: ./
+        with:
+          testFilePath: tests/
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+
       - uses: actions/upload-artifact@v1
         with:
           name: jmeter-test-results
