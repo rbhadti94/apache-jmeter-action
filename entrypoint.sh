@@ -37,6 +37,7 @@ else
   echo "Multiple files specified - Running each JMX File"
   for FILE in "$BASEFILE_PATH/*.jmx"
   do
+    echo "Running test with $FILE"
     jmeter -n -t $FILE $@
     test_run=$?
     # If any of the previous tests haven't failed
