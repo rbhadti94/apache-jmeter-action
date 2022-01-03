@@ -34,8 +34,8 @@ then
   status=$?
 else
   BASEFILE_PATH=$(basename $TESTFILE_PATH)
-  echo "Multiple files specified - Running each JMX File"
-  for FILE in "$BASEFILE_PATH/*.jmx"
+  echo "Folder specified - Running each JMX File In Folder"
+  for FILE in $BASEFILE_PATH/*.jmx
   do
     echo "Running test with $FILE"
     jmeter -n -t $FILE $@
