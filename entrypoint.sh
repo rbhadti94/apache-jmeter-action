@@ -41,7 +41,7 @@ else
     jmeter -n -t $FILE $@
     test_run=$?
     # If any of the previous tests haven't failed
-    if [ "$test_run" == "0" ] && [ "$status" == "0" ]
+    if [ "$test_run" == "0" ] && [ "$status" == "1" ]
     then
       status=1 # Set one of the tests failing
     fi
