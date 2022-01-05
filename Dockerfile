@@ -4,7 +4,7 @@ LABEL "maintainer" "Ravindra Bhadti"
 LABEL "com.github.actions.name"="apache-jmeter"
 LABEL "com.github.actions.description"="Run Apache JMeter Performance Tests"
 
-ENV JMETER_VERSION "5.4.1"
+ENV JMETER_VERSION "5.4.3"
 ENV JMETER_HOME "/opt/apache/apache-jmeter-${JMETER_VERSION}"
 ENV JMETER_BIN "${JMETER_HOME}/bin"
 ENV PATH "$PATH:$JMETER_BIN"
