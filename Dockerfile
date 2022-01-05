@@ -1,6 +1,6 @@
 FROM alpine:3.15
 
-LABEL "maintainer" "Ravindra Bhadti"
+LABEL "maintainer" "Ravindra Bhadti, @rbhadti94"
 LABEL "com.github.actions.name"="apache-jmeter"
 LABEL "com.github.actions.description"="Run Apache JMeter Performance Tests"
 
