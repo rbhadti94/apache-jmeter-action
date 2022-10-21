@@ -35,7 +35,7 @@ then
 else
   BASEFILE_PATH=$(basename $TESTFILE_PATH)
   echo "Folder specified - Running each JMX File In Folder"
-  for FILE in $BASEFILE_PATH/*.jmx
+  for FILE in $(find $BASEFILE_PATH -name '*.jmx')
   do
     echo "Running test with $FILE"
     jmeter -n -t $FILE $@
