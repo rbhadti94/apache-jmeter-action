@@ -42,6 +42,14 @@ Please see https://jmeter.apache.org/usermanual/get-started.html for more inform
     outputReportsFolder: reports/
     args: "--loglevel INFO -JMyProperty=Value --jmeterlogconf=log.conf"
 
+- name: Run JMeter Tests plugins
+  uses: rbhadti94/apache-jmeter-action@v0.5.0
+  with:
+    testFilePath: tests/sample_test.jmx
+    outputReportsFolder: reports/
+    args: "--loglevel INFO -JMyProperty=Value --jmeterlogconf=log.conf"
+    plugins: ""
+
 # Use JMeter to run all tests in a folder
 # Modify the logging level and pass in some custom properties and config
 - name: Run All JMeter Tests In tests Folder

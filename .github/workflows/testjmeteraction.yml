@@ -25,6 +25,7 @@ jobs:
           testFilePath: tests/sample_test.jmx
           outputReportsFolder: reports/
           args: "--loglevel INFO"
+          plugins: "jpgc-casutg"
 
       - name: Run More Than One JMeter Action
         uses: ./
